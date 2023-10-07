@@ -18,7 +18,7 @@ describe('My First Test', () => {
   });
 
   it('displays error message for incorrect login', () => {
-    cy.visit('your_vue_app_url'); // visit your vue app URL
+    cy.visit('/'); // visit your vue app URL
 
     cy.get('input[name=username]')
       .type('incorrectUsername'); // input incorrect username
