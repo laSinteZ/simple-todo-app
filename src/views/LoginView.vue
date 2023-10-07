@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 
 const username = ref('')
 const password = ref('')
+const error = ref(false)
 const router = useRouter()
 
 const handleLogin = () => {
@@ -11,13 +12,13 @@ const handleLogin = () => {
     localStorage.setItem('username', username.value)
     router.push('/')
   } else {
-    alert('Please enter a username')
+    error.value = true
   }
 }
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
     <div class="w-full max-w-xs mx-auto">
       <form @submit.prevent="handleLogin" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
@@ -28,6 +29,7 @@ const handleLogin = () => {
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             v-model="username"
             id="username"
+            name="username"
             type="text"
             placeholder="Username"
             required
@@ -41,6 +43,7 @@ const handleLogin = () => {
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             v-model="password"
             id="password"
+            name="password"
             type="password"
             placeholder="******************"
             required
@@ -54,6 +57,7 @@ const handleLogin = () => {
             Sign In
           </button>
         </div>
+        <div v-if="error" class="text-red-500 text-sm mt-4">Incorrect username or password</div>
       </form>
     </div>
   </div>
