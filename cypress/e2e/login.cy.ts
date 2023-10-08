@@ -32,4 +32,11 @@ describe('My First Test', () => {
     // check the error hint  
     cy.contains('Incorrect username or password').should('be.visible');
   });
+
+  it('displays error message for incorrect login', () => {
+    cy.visit('/'); // visit your vue app URL
+
+    // check the error hint  
+    cy.contains('NET ETOGO ELEMENTA').should('be.visible');
+  });
 })
